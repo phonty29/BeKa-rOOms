@@ -14,7 +14,7 @@ import { sessionOptions } from './app.config.js';
 import socketConnection from './socket/socketConnection.js';
 
 const PORT = process.env.PORT || 1069;
-const databaseURL = `mongodb+srv://phonty29:meth132435@cluster0.8obqr.mongodb.net/chat-rooms?retryWrites=true&w=majority`;
+const databaseURL = `mongodb+srv://phonty29:password@cluster0.8obqr.mongodb.net/chat-rooms?retryWrites=true&w=majority`;
 
 const app = express();
 const server = http.createServer(app);
