@@ -1,0 +1,22 @@
+      <ul id="messages">
+        <% for (let i = 0; i < messages.length; i++) { %>
+          <li class="messageFrame">
+            <div class="img-container bi text-muted flex-shrink-0 me-3"><img src="http://localhost:1069/<%= messages[i].authorAvatar %>" alt="avatar" class="img-thumbnail" title="<%= messages[i].authorName %>"></div>
+            <div class="content">
+              <h6 class="message-author mb-1"><%= messages[i].authorName %> 
+                <% if (`${chat.creator}` == `${messages[i].authorId}`) { %>
+                  <span>admin</span>
+                <% } %>
+                </h6>
+              <p class="message-body mb-0"><%= messages[i].content %></p>
+            </div>
+          </li>  
+          <% } %>                     
+      </ul>
+      <div id="form">
+        <div class="input-group">
+          <input type="text" id="message-input" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button id="send-button" type="button" class="btn btn-danger">Send</button>
+        </div>
+      </div>
+

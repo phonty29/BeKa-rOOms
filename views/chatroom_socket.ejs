@@ -1,0 +1,88 @@
+  <script>
+  	const socket = io();
+  	$(document).ready(function() {
+  		socket.emit('user join', {chatId: '<%= chat._id %>', username: '<%= user.name %>'});
+  	});
+
+    socket.on('set users', ({members}) => {
+    	$('ul.user-list')[0].innerHTML = addUsers(members);
+      $('span#user-counter')[0].textContent = members.length;
+    });
+  </script>
+  <script>
+    $('#send-button').on('click', () => {
+      const newMessage = {content: $('input#message-input').val()};
+      $.ajax({
+        type: 'PUT',
+        url: `${url}/chats/<%= chat._id %>`,
+        dataType: 'json',
+        data: JSON.stringify(newMessage),
+        contentType: "application/json; charset=utf-8",
+        success: (res) => {
+          $('ul#messages').append(createNewMessage(newMessage.content));
+          socket.emit('send message', '<%= chat._id %>');
+          $('input#message-input')[0].value = '';
+   		    window.scrollTo(0, document.body.scrollHeight);
+        },
+        error: (err) => {
+          console.log(err);
+        }  
+      });        
+    });
+
+  socket.on('message sent', ({admin, authorName, authorAvatar, content}) => {
+    $('ul#messages').append(createNewMessageForOther(admin, authorName, authorAvatar, content));
+    window.scrollTo(0, document.body.scrollHeight);
+  });    
+  </script>
+   <script>
+        $('span.rename-link').on('click', function(e) {
+            const newChatName = prompt('Enter new chat name');
+                $.ajax({
+                  type: 'PUT',
+                  url: `${url}/chats`,
+                  dataType: 'json',
+                  data: JSON.stringify({chatId: '<%= chat._id %>', newChatName}),
+                  contentType: "application/json; charset=utf-8",                  
+                  success: (res) => {
+                    socket.emit('chat renamed', {chatId: '<%= chat._id %>', newName: res.newName});
+                    $('title').text(res.newName);                   
+                  },
+                  error: (err) => {
+                    alert(err.responseJSON.message);
+                  }          
+                }); 
+        }); 
+
+      socket.on('chat renamed', ({newName}) => {
+        $('title').text(newName);
+      });
+  </script>  
+  <script>
+        $('span.deleteChat-link').click( function(e) {
+              const deleteChat = confirm("Do you want to delete this chat?");
+              if (deleteChat) {
+                $.ajax({
+                  type: 'DELETE',
+                  url: `${url}/chats/<%= chat._id %>`,
+                  success: (res) => {
+                    socket.emit('delete chat', '<%= chat._id %>');
+                    location.href = `${url}/chats`;
+                  },
+                  error: (err) => {
+                    alert(err.responseJSON.message);
+                  }          
+                }); 
+              } 
+        }); 
+
+        socket.on('deleted chat', () => {
+          location.href = `${url}/chats`;
+        });
+  </script>  
+  <script>
+    socket.on('error occurred', () => {
+        location.href = `${url}/chats`;
+    });
+  </script>
+  	

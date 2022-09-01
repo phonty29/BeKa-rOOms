@@ -1,0 +1,13 @@
+      #form { background: #0d6efd; padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 4rem; box-sizing: border-box; backdrop-filter: blur(10px); }
+      #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
+      #input:focus { outline: none; }
+
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages > li { padding: 0.5rem 1rem; width: 100%}
+      #messages > li:nth-child(odd) { background: rgb(248,249,2502); }
+      #messages .messageFrame {display: flex; flex-direction: row; height: fit-content;}
+      #messages .messageFrame .img-container {height: 60px; width: 60px;}
+      #messages .messageFrame img {object-fit: cover; overflow: hidden; max-height: 60px; max-width: 60px;}
+      #messages .messageFrame .content .message-author {font-size: 16px; font-weight: bold;}
+      #messages .messageFrame .content .message-author span {font-size: 12px; font-weight: 300; font-style: italic; color: red;}
+      #messages .messageFrame .content .message-body {font-size: 14px;}

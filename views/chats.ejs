@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>BeKa rOOms</title>
+
+    <!-- INCLUDE BOOTSRAP -->
+    <link href="https://getbootstrap.com/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/icons/favicon-32x32.png" type="image/png">
+    <link rel="icon" href="/icons/favicon-16x16.png" type="image/png">
+    <link rel="icon" href="/icons/favicon.ico">  
+
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="/styles/navbar.css">  
+    <link rel="stylesheet" href="/styles/chats.css">  
+
+    <!-- BOOTSTRAP TEMPLATE -->
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbars/navbar.css">
+    <link href="https://getbootstrap.com/docs/5.2/examples/list-groups/list-groups.css" rel="stylesheet">
+</head>
+<body class="text-center">
+  <%- include('navbar.ejs') %>
+  <%- include('chats_temp.ejs') %>
+  <script src="https://getbootstrap.com/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <%- include('const_scripts.ejs') %>
+  <%- include('scripts.ejs') %>
+  <%- include('chat_scripts.ejs') %>
+  <%-include('chat_socket.ejs')%>
+</body>
+</html>

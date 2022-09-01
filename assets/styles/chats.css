@@ -1,0 +1,51 @@
+    .main {
+        display: flex;
+        padding: 50px 10px 0px;
+      }
+      .container-mine {
+        margin: 0 auto;
+        width: 600px;
+      }
+      #button-addon {
+        width: 110px;
+      }
+      .frame {
+        overflow-y: scroll; 
+        height: 350px; 
+        padding: 2px;
+      }
+      .position-relative {
+      }
+      .list-group {
+        background-color: #fff;
+        max-width: 600px!important
+      }
+      .list-group-item {
+        width: 100%;
+        background-color: #e6e6e6;
+        text-align-last: left;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .list-group-item:hover {
+        background-color: #fff !important;
+      }
+      .btn-group {
+        width: 100%;
+      }
+      .btn-danger {
+        display: none;
+      }
+      .show {
+        display: block;
+      }      
+      .chat-avatar {
+        max-height: 30px;
+        object-fit: cover;
+      }
+      .delete-chat {
+        display: grid;
+        place-items: center;
+        height: 30px;
+      }

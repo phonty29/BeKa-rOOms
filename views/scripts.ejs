@@ -1,0 +1,35 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+      $('span.logout-link').on('click', () => {
+        const logout = confirm('Do you really want to logout?');
+        if (logout) {
+            $.ajax({
+              type: 'DELETE',
+              url: `${url}/auth/sign-in`,
+              success: (res) => {
+                location.href =`${url}/auth/sign-in`;
+              },
+              error: (err) => {
+                console.log(err.responseJSONs);
+              }          
+            });          
+        }
+      }); 
+</script>  
+<script>
+      $('span.delete-link').on('click', () => {
+        const reply = prompt('Please type "<%= user.name %>" if you want to delete this account\n\nYou can not undo this action');
+        if ('<%= user.name %>' == reply) {
+            $.ajax({
+              type: 'DELETE',
+              url: `${url}/auth/user`,
+              success: (res) => {
+                location.href =`${url}/auth/sign-up`;
+              },
+              error: (err) => {
+                console.log(err.responseJSON.message);
+              }          
+            });              
+        }
+      });
+</script>

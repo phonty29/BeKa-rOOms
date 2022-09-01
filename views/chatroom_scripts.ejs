@@ -1,0 +1,43 @@
+      <script>
+        const addUsers = (members) => {
+          let users = '';
+          for (let i = 0; i < members.length; i++) 
+            users += `<li><a class="dropdown-item">${members[i].name}</a></li>\n`;
+          return users;
+        };
+        const createNewMessage = (content) => (
+          `
+              <li class="messageFrame">
+                <div class="img-container bi text-muted flex-shrink-0 me-3"><img src="/<%= user.avatar %>" alt="avatar" class="img-thumbnail" title="<%= user.name %>"></div>
+                <div class="content">
+                  <h6 class="message-author mb-1"><%= user.name %> 
+                    <% if (chatIsMine) { %>
+                      <span>admin</span>
+                    <% } %>
+                    </h6>
+                  <p class="message-body mb-0">${content}</p>
+                </div>
+              </li> 
+          `
+        );
+        const createNewMessageForOther = (admin, authorName, authorAvatar, content) => (
+          `
+              <li class="messageFrame">
+                <div class="img-container bi text-muted flex-shrink-0 me-3"><img src="/${authorAvatar}" alt="avatar" class="img-thumbnail" title="${authorName}"></div>
+                <div class="content">
+                  <h6 class="message-author mb-1">${authorName} 
+                      <span>${admin}</span>
+                  </h6>
+                  <p class="message-body mb-0">${content}</p>
+                </div>
+              </li> 
+          `
+        );  
+      </script>      
+      <script>
+            $('#message-input').keyup(function(event) {
+                if (event.which === 13) {
+                    $('#send-button').click();
+               }
+            });          
+      </script>      
